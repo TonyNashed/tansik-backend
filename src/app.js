@@ -1,11 +1,11 @@
-const express = require("express");
-const cors = require("cors");
-const testRoutes = require("./routes/testRoutes");
+import express from 'express';
+import routes from './routes/index.js';
+
 const app = express();
-app.use(cors());
+
 app.use(express.json());
-app.use("/test", testRoutes);
-app.get("/", (req, res) => {
-  res.send("Backend is running");
-});
-module.exports = app;
+
+// All API routes under /api
+app.use('/api', routes);
+
+export default app;
